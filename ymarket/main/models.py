@@ -8,6 +8,9 @@ class OfferCategory(models.Model):
 
     objects = models.Manager()
 
+    def __str__(self):
+        return str(self.name)
+
     class Meta:
         verbose_name = "Категория товаров"
         verbose_name_plural = "Категории товаров"
@@ -43,6 +46,9 @@ class Offer(models.Model):
     amount = models.IntegerField()
 
     objects = models.Manager()
+
+    def __str__(self):
+        return f"{str(self.name)} by {str(self.brand)}"
 
     class Meta:
         verbose_name = "Товар"
