@@ -3,15 +3,6 @@ from django.db import models
 # Create your models here.
 
 
-class Params(models.Model):
-    name = models.TextField()
-    value = models.TextField()
-
-    class Meta:
-        verbose_name = "Настройка"
-        verbose_name_plural = "Настройки"
-
-
 class OfferCategory(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
 
@@ -20,6 +11,16 @@ class OfferCategory(models.Model):
     class Meta:
         verbose_name = "Категория товаров"
         verbose_name_plural = "Категории товаров"
+
+
+class Params(models.Model):
+    name = models.TextField()
+    value = models.TextField()
+    related_category = models.ForeignKey(OfferCategory, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Настройка"
+        verbose_name_plural = "Настройки"
 
 
 class Offer(models.Model):
