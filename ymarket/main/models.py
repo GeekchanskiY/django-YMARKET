@@ -19,7 +19,7 @@ class OfferCategory(models.Model):
 class Params(models.Model):
     name = models.TextField()
     value = models.TextField()
-    related_category = models.ForeignKey(OfferCategory, on_delete=models.CASCADE)
+    related_category = models.ForeignKey(OfferCategory, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = "Настройка"
