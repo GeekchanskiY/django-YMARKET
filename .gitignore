@@ -185,3 +185,4 @@ fabric.properties
 .idea
 
 vars.py
+ymarket/ymarket/settings.py
