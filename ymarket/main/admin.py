@@ -21,7 +21,7 @@ class OfferCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Params)
 class ParamsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'value', 'category')
+    list_display = ('name', 'value', 'related_category')
     search_fields = ('name', )
-    fields = ('name', 'value', 'category')
+    fields = ('name', 'value', 'related_category')
 
