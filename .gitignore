@@ -186,3 +186,4 @@ fabric.properties
 
 vars.py
 ymarket/ymarket/settings.py
+ymarket/db.sqlite3
