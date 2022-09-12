@@ -9,7 +9,8 @@ class OfferAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     fields = ('name', 'picture', 'description', 'brand', 'category', 'bar_code', 'params', 'price',
               'currency', 'vat', 'home_url', 'min_quantity', 'step_quantity', 'dimensions', 'weight', 'disabled',
-              'amount')
+              'amount', 'modified', 'created')
+    readonly_fields = ('created',)
 
 
 @admin.register(OfferCategory)
