@@ -1,4 +1,4 @@
-from rest_framework.serializers import HyperlinkedModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer, SlugRelatedField
 from .models import OfferCategory, Offer, Params
 
 
@@ -10,7 +10,10 @@ class OfferCategorySerializer(HyperlinkedModelSerializer):
 
 
 class OfferSerializer(HyperlinkedModelSerializer):
-    category = OfferCategorySerializer
+    category = SlugRelatedField(
+        queryset=OfferCategory.objects.all(),
+        slug_field='id'
+    )
 
     class Meta:
         model = Offer
