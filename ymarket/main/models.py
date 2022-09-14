@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class OfferCategory(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
-
+    ymarket_id = models.IntegerField(default=0)
     objects = models.Manager()
 
     def __str__(self):

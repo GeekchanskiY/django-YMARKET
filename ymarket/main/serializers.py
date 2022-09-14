@@ -17,7 +17,7 @@ class OfferSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Offer
-        fields = ('id', 'name', 'picture', 'description', 'brand', 'category', 'bar_code', 'params', 'price',
+        fields = ('id', 'name', 'SKU', 'picture', 'description', 'brand', 'category', 'bar_code', 'params', 'price',
                   'currency', 'vat', 'home_url', 'min_quantity', 'step_quantity', 'dimensions', 'weight', 'disabled',
                   'amount')
         read_only_fields = ('id',)

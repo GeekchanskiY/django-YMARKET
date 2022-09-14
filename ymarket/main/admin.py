@@ -15,9 +15,9 @@ class OfferAdmin(admin.ModelAdmin):
 
 @admin.register(OfferCategory)
 class OfferCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ('name',)
-    fields = ('name',)
+    list_display = ('name', 'ymarket_id')
+    search_fields = ('name', 'ymarket_id')
+    fields = ('name', 'ymarket_id')
 
 
 @admin.register(Params)
