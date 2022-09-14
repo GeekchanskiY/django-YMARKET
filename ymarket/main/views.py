@@ -54,13 +54,15 @@ class Update(APIView):
         data = request.data
 
         try:
-            category = OfferCategory.objects.get(name=data.get("category").lower())
+            category = OfferCategory.objects.get(id=int(data.get("category")))
         except:
             return Response({"err": "Error occurred. Probably there's wrong category arg"},
                             status=status.HTTP_400_BAD_REQUEST)
 
-        offer = Offer.objects.get(category=category, name=data.get("name"))
+        offers = Offer.objects.filter(category=category, name=data.get("name"))
+        offer = offers[0]
         offer.price = data.get("price")
+        offer.home_url = data.get("url")
         offer.dimensions = data.get("dimensions")
         offer.weight = data.get("weight")
         offer.amount = data.get("amount")
@@ -68,24 +70,6 @@ class Update(APIView):
         offer.disabled = False
         offer.save()
         return Response("Updated", status=status.HTTP_201_CREATED)
-
-
-class YMLCreator:
-    def __init__(self, data: list[Offer]):
-        self.data: list[Offer] = data
-
-    def create_yml(self):
-        tree = ET.parse("template.xml")
-        offers: list[Offer] = self.data
-        root = tree.getroot()
-        root.set("date", str(datetime.now()))
-        offers_tag = root.find('shop').find('offers')
-        categories_tag = root.find('shop').find('categories')
-        all_categories = []
-        for offer in offers:
-            all_categories.append(offer.category)
-        all_categories = list(set(all_categories))
-
 
 
 class Export(APIView):
